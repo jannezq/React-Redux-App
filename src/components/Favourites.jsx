@@ -2,15 +2,15 @@ import { Row, Col, Button, Container, Card } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { FaTrash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Favourites = () => {
   let favourites = useSelector((state) => state.favourites.content);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   return (
-    <Container className="mt-5 ">
+    <Container className="mt-5">
       <Row className="d-flex justify-content-between">
-        {" "}
         <h2>Favourited Jobs!</h2>
         <Button
           variant="primary"
@@ -30,10 +30,14 @@ const Favourites = () => {
             <Card className="mb-3">
               <Card.Body>
                 <Card.Title> {fave.title}</Card.Title>
-                <Card.Subtitle className="mb-2 text-muted">
-                  {fave.company_name}
-                </Card.Subtitle>
-                <Card.Text>{fave.candidate_required_location}</Card.Text>
+                <Link to={`/${fave.company_name}`}>
+                  <Card.Subtitle className="mb-2 text-muted">
+                    {fave.company_name}
+                  </Card.Subtitle>
+                </Link>
+                <Card.Text>
+                  <em>Job Locations:</em> {fave.candidate_required_location}
+                </Card.Text>
                 <Card.Link href={fave.url}>Job Link</Card.Link>
               </Card.Body>
               <Button

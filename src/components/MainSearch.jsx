@@ -42,7 +42,7 @@ const MainSearch = () => {
             className="d-flex justify-content-center align-items-center px-2"
             onClick={() => navigate("/favourites")}
           >
-            Favourite Jobs
+            Favourite
           </Button>
         </Col>
         <Col xs={10} className="mx-auto">
