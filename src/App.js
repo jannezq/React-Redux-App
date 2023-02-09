@@ -12,10 +12,7 @@ function App() {
       <Container>
         <Routes>
           <Route path="/" element={<MainSearch />} />
-          <Route
-            path="/favourites"
-            element={<h2>this is favourites page</h2>}
-          />
+          <Route path="/favourites" element={<Favourites />} />
           <Route path="/:companyName" element={<CompanySearchResults />} />
           <Route path="*" element={<h2>404 Page Not Found :(</h2>} />
         </Routes>
