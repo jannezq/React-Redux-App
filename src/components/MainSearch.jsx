@@ -57,7 +57,7 @@ const MainSearch = () => {
         </Col>
         <Col xs={10} className="mx-auto mb-5">
           {jobs.map((jobData) => (
-            <Job key={jobData._id} data={jobData} />
+            <Job key={jobData._id} data={jobData} /> //error is happening here somehow
           ))}
         </Col>
       </Row>
