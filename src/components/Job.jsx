@@ -1,9 +1,12 @@
 import { Row, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { BsFillHeartFill } from "react-icons/bs";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { Star, StarFill } from 'react-bootstrap-icons'
 
 const Job = ({ data }) => {
+  const favourites = useSelector((state) => state.favourite.list)
+  const isFav = favourites.includes(data.company_name)
   const dispatch = useDispatch();
   return (
     <Row
@@ -11,6 +14,31 @@ const Job = ({ data }) => {
       style={{ border: "1px solid #00000033", borderRadius: 4 }}
     >
       <Col xs={3}>
+      {isFav ? (
+          <StarFill
+            color="gold"
+            size={16}
+            className="mr-2 my-auto"
+            onClick={() =>
+              dispatch({
+                type: 'REMOVE_FROM_FAVOURITE',
+                payload: data.company_name,
+              })
+            }
+          />
+        ) : (
+          <Star
+            color="gold"
+            size={16}
+            className="mr-2 my-auto"
+            onClick={() =>
+              dispatch({
+                type: 'ADD_TO_FAVOURITE',
+                payload: data.company_name,
+              })
+            }
+          />
+        )}
         <Link to={`/${data.company_name}`}>{data.company_name}</Link>
       </Col>
       <Col xs={9}>
